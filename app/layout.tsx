@@ -15,7 +15,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Juan Alberto",
+  title: "Cocinas Caquetá",
   description: "Esta es la aplicacion de Oscar",
 };
 
