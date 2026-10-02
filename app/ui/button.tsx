@@ -15,10 +15,10 @@ export default function Button({ children, onClick, className }: ButtonProps) {
       className={clsx(
         // Tamaño responsive
         "px-3 py-2 text-sm",          // móvil
-        "md:px-16 md:py-3 md:text-lg", // escritorio
+        "md:px-8 md:py-2 md:text-lg", // escritorio
 
         // Estilos base
-        "bg-blue-600 hover:bg-blue-700 rounded-md font-medium transition",
+        "bg-green-800 hover:bg-green-700 rounded-md font-medium transition",
 
         className
       )}
