@@ -1,52 +1,75 @@
-import Card from "./card";
+import { MdKitchen, MdHomeRepairService } from "react-icons/md";
+import { GiWoodBeam } from "react-icons/gi";
+import { FaTools } from "react-icons/fa";
+import Image from "next/image";
+import ServiceCard from "./ServiceCard";
 
 export default function Servicios() {
   return (
-    <section className="w-full py-10 bg-[#F7F3ED] text-[#4A3F35]">
-      <div className="mx-auto px-4">
+    <section className="py-16 lg:py-20 bg-white">
+      <div className="max-w-[1440px] mx-auto px-4 lg:px-20">
 
-        <p className="text-md md:text-lg text-green-700 leading-relaxed mb-4 text-center">
-          ¿Qué hacemos?
-        </p>
+        {/* Encabezado */}
+        <div className="text-center mb-12">
+          <p className="text-[#007F5F] text-sm font-semibold uppercase tracking-wider mb-2">
+            ¿Qué hacemos?
+          </p>
 
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          Servicios destacados
-        </h2>
+          <h2 className="text-[#1A1A1A] mb-4 text-3xl md:text-4xl font-bold" style={{ fontFamily: "Poppins" }}>
+            Nuestros Servicios
+          </h2>
 
-        <p className="text-md md:text-lg text-[#4A3F35]/80 leading-relaxed mb-12 text-center">
-          De la idea al resultado final. Acompañamos cada etapa de tu proyecto con experiencia y calidad.
-        </p>
+          <p className="text-[#6B6B6B] text-base max-w-xl mx-auto font-inter">
+            De la idea al resultado final. Acompañamos cada etapa de tu proyecto con experiencia y calidad.
+          </p>
+        </div>
 
-        {/* Grid de tarjetas */}
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-10 bg-red-500">
+        {/* Tarjetas de servicios */}
+        {/* Grid */}
+        <div className="flex flex-col items-center gap-6 md:grid md:grid-cols-3 md:gap-4">
 
-          {/* Tarjeta 1 */}
-          <Card
-            img="ferreteria.png"
-            title="Diseño de Cocinas"
-            description="Creamos diseños personalizados que se adaptan a tus necesidades y estilo de vida, optimizando cada espacio."
+          <ServiceCard
+            img={
+              <Image
+                src="/cocina.png"
+                alt="Diseño de Cocinas"
+                fill
+                className="object-cover"
+              />
+            }
+            title="Fabricación de Cocinas"
+            desc="Diseñamos y fabricamos cocinas a medida con los mejores materiales del mercado. Desde el diseño hasta la instalación."
+            price="$350.000"
+            time="2–5 días"
           />
-
-          {/* Tarjeta 2 */}
-          <Card
-            img="ferreteria.png"
-            title="Madera y Triplex"
-            description="Materiales de alta calidad para tus proyectos residenciales y comerciales."
+          <ServiceCard
+            img={
+              <Image
+                src="/cocina.png"
+                alt="Diseño de Cocinas"
+                fill
+                className="object-cover sm:w-10 sm:h-20"
+              />
+            }
+            title="Decoración de Interiores"
+            desc="Diseños personalizados que optimizan tu espacio y reflejan tu estilo."
+            price="$350.000"
+            time="2–5 días"
           />
-
-          {/* Tarjeta 3 */}
-          <Card
-            img="ferreteria.png"
-            title="Proyectos Personalizados"
-            description="Soluciones únicas adaptadas a tus necesidades, desde muebles hasta espacios completos."
+          <ServiceCard
+            img={
+              <Image
+                src="/cocina.png"
+                alt="Diseño de Cocinas"
+                fill
+                className="object-cover"
+              />
+            }
+            title="Reparación de Muebles"
+            desc="Servicios de reparación y mantenimiento para todos tus muebles."
+            price="$350.000"
+            time="2–5 días"
           />
-          {/* Tarjeta 4 */}
-          <Card
-            img="ferreteria.png"
-            title="Servicio Técnico"
-            description="Asistencia técnica especializada para el mantenimiento y reparación de tus proyectos."
-          />
-
         </div>
       </div>
     </section>

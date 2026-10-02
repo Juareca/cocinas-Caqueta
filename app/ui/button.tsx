@@ -18,7 +18,7 @@ export default function Button({ children, onClick, className }: ButtonProps) {
         "md:px-8 md:py-2 md:text-lg", // escritorio
 
         // Estilos base
-        "bg-green-800 hover:bg-green-700 rounded-md font-medium transition",
+        "inline-flex items-center justify-center gap-2 h-12 px-6 rounded-lg bg-[#007F5F] text-white font-semibold text-base transition-all hover:bg-[#006a4f] active:scale-95",
 
         className
       )}

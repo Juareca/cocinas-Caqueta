@@ -21,16 +21,9 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="w-full flex items-center justify-between bg-[#F7F3ED]/70 text-[#4A3F35] shadow px-4 py-2 border-b border-[#E5D8C8]/60">
+    <header className="w-full flex items-center justify-between bg-white text-[#4A3F35] shadow px-4 py-2 border-b border-[#E5D8C8]/60">
       
       <div className="flex items-center gap-3">
-        {/* Botón menú lateral */}
-        <button
-          onClick={() => setOpen(true)}
-          className="p-2 rounded-md border border-[#C8A98A] md:hidden hover:bg-[#EDE4D9] transition"
-        >
-          <Bars3Icon className="h-6 w-6 text-[#4A3F35]" />
-        </button>
 
         {/* Icono */}
         <Icono />
@@ -59,6 +52,14 @@ export default function Navbar() {
           </Link>
         ))}
       </nav>
+
+      {/* Botón menú lateral */}
+      <button
+        onClick={() => setOpen(true)}
+        className="p-2 rounded-md border border-[#C8A98A] md:hidden hover:bg-[#EDE4D9] transition"
+      >
+        <Bars3Icon className="h-6 w-6 text-[#4A3F35]" />
+      </button>
 
       {/* Drawer lateral */}
       {open && (
