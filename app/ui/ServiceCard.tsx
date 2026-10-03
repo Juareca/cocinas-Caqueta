@@ -13,12 +13,9 @@ export default function ServiceCard({ img, title, desc, price, time }: Props) {
     <div className=" group bg-[#F5F5F5] p-8 rounded-xl hover:bg-[#007F5F] transition-colors duration-300 w-80">
 
       {/* Imagen */}
-      <div className="w-full h-32 rounded-lg bg-[#007F5F]/10 
-                      group-hover:bg-white/20 flex items-center justify-center 
-                      mb-6 transition-colors overflow-hidden relative">
-        <div className="flex items-center justify-center">
-          {img}
-        </div>
+      <div className="relative w-full h-32 rounded-lg bg-[#007F5F]/10 
+                group-hover:bg-white/20 mb-6 transition-colors overflow-hidden">
+        {img}
       </div>
 
       <h3 className="text-[#1A1A1A] group-hover:text-white text-xl font-bold mb-3 transition-colors" style={{ fontFamily: "Poppins" }}>
