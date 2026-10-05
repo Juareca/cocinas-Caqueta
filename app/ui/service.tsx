@@ -56,7 +56,7 @@ export default function Servicios() {
         </div>
 
         {/* Carrusel */}
-        <div className="pl-6 overflow-hidden" ref={emblaRef}>
+        <div className="pl-8 overflow-hidden" ref={emblaRef}>
           <div className="flex gap-8">
 
             {/* Tarjeta 1 */}
