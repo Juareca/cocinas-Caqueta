@@ -38,7 +38,7 @@ export default function Servicios() {
 
   return (
     <section className="py-16 lg:py-20 bg-white relative">
-      <div className="max-w-[1440px] mx-auto px-4 lg:px-20">
+      <div className="max-w-[1440px] mx-auto px-8 lg:px-20">
 
         {/* Encabezado */}
         <div className="text-center mb-12">
@@ -56,7 +56,7 @@ export default function Servicios() {
         </div>
 
         {/* Carrusel */}
-        <div className="pl-0 overflow-hidden" ref={emblaRef}>
+        <div className="pl-6 overflow-hidden" ref={emblaRef}>
           <div className="flex gap-8">
 
             {/* Tarjeta 1 */}
