@@ -4,13 +4,15 @@ import Image from "next/image";
 import ServiceCard from "./ServiceCard";
 import useEmblaCarousel from "embla-carousel-react";
 import { useEffect, useState } from "react";
+import ArrowButtons from "./ArrowButtons";
+import { CarouselDots } from "./CarouselDots";
 
 export default function Servicios() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-    loop: false,
-    containScroll: "trimSnaps",
-    dragFree: false,
-  });
+  loop: false,
+  align: "start",
+  containScroll: "keepSnaps",
+});
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
@@ -54,11 +56,11 @@ export default function Servicios() {
         </div>
 
         {/* Carrusel */}
-        <div className="pl-8 overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-6">
+        <div className="pl-0 overflow-hidden" ref={emblaRef}>
+          <div className="flex gap-8">
 
             {/* Tarjeta 1 */}
-            <div className="min-w-[300px] md:min-w-[350px]">
+            <div className="min-w-[260px] md:min-w-[300px]">
               <ServiceCard
                 img={
                   <div className="relative w-full h-40">
@@ -72,14 +74,13 @@ export default function Servicios() {
                   </div>
                 }
                 title="Fabricación de Cocinas"
-                desc="Diseñamos y fabricamos cocinas a medida con los mejores materiales del mercado."
                 price="$350.000"
                 time="2–5 días"
               />
             </div>
 
             {/* Tarjeta 2 */}
-            <div className="min-w-[300px] md:min-w-[350px]">
+            <div className="min-w-[260px] md:min-w-[300px]">
               <ServiceCard
                 img={
                   <div className="relative w-full h-40">
@@ -93,14 +94,13 @@ export default function Servicios() {
                   </div>
                 }
                 title="Decoración de Interiores"
-                desc="Diseños personalizados que optimizan tu espacio y reflejan tu estilo."
                 price="$350.000"
                 time="2–5 días"
               />
             </div>
 
             {/* Tarjeta 3 */}
-            <div className="min-w-[300px] md:min-w-[350px]">
+            <div className="min-w-[260px] md:min-w-[300px]">
               <ServiceCard
                 img={
                   <div className="relative w-full h-40">
@@ -114,14 +114,13 @@ export default function Servicios() {
                   </div>
                 }
                 title="Reparación de Muebles"
-                desc="Servicios de reparación y mantenimiento para todos tus muebles."
                 price="$350.000"
                 time="2–5 días"
               />
             </div>
 
-            {/* Tarjeta 3 */}
-            <div className="min-w-[300px] md:min-w-[350px]">
+            {/* Tarjeta 4 */}
+            <div className="min-w-[260px] md:min-w-[300px]">
               <ServiceCard
                 img={
                   <div className="relative w-full h-40">
@@ -134,8 +133,7 @@ export default function Servicios() {
                     />
                   </div>
                 }
-                title="Reparación de Muebles"
-                desc="Servicios de reparación y mantenimiento para todos tus muebles."
+                title="Reparación maquinas"
                 price="$350.000"
                 time="2–5 días"
               />
@@ -144,34 +142,14 @@ export default function Servicios() {
           </div>
         </div>
 
-        {/* Flecha izquierda */}
-        <button
-          onClick={scrollPrev}
-          className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#007F5F] text-white px-4 py-2 mt-16 rounded-full shadow-lg hover:bg-[#005f46] transition"
-        >
-          {"<"}
-        </button>
+        { /* Flechas Derecha e Izquierda */}
+        <ArrowButtons onPrev={scrollPrev} onNext={scrollNext} />
 
-        {/* Flecha derecha */}
-        <button
-          onClick={scrollNext}
-          className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#007F5F] text-white px-4 py-2 mt-16 rounded-full shadow-lg hover:bg-[#005f46] transition"
-        >
-          {">"}
-        </button>
-
-        {/* Dots */}
-        <div className="flex justify-center gap-2 mt-8">
-          {scrollSnaps.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => emblaApi?.scrollTo(index)}
-              className={`w-3 h-3 rounded-full transition ${
-                index === selectedIndex ? "bg-[#007F5F]" : "bg-gray-300"
-              }`}
-            />
-          ))}
-        </div>
+        <CarouselDots
+          scrollSnaps={scrollSnaps}
+          selectedIndex={selectedIndex}
+          onDotClick={(index) => emblaApi?.scrollTo(index)}
+        />
 
       </div>
     </section>
