@@ -21,13 +21,8 @@ export default function Servicios() {
   useEffect(() => {
     if (!emblaApi) return;
 
-    emblaApi.on("scroll", () => {
-      if (emblaApi.canScrollPrev()) {
-        emblaApi.scrollTo(emblaApi.selectedScrollSnap());
-      }
-    });
-
     setScrollSnaps(emblaApi.scrollSnapList());
+    
     emblaApi.on("select", () => {
       setSelectedIndex(emblaApi.selectedScrollSnap());
     });
@@ -37,7 +32,7 @@ export default function Servicios() {
   const scrollPrev = () => emblaApi?.scrollPrev();
 
   return (
-    <section className="py-16 lg:py-20 bg-white relative">
+    <section className="py-16 lg:py-10 bg-white relative">
       <div className="max-w-[1440px] mx-auto px-8 lg:px-20">
 
         {/* Encabezado */}

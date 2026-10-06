@@ -9,7 +9,7 @@ interface Props {
 
 export default function ServiceCard({ img, title, price, time }: Props) {
   return (
-    <div className=" group bg-[#F5F5F5] rounded-xl p-4 hover:bg-[#007F5F] transition-colors duration-300 w-65">
+    <div className=" group bg-[#F5F5F5] rounded-xl p-4 hover:bg-[#007F5F] transition-colors duration-300 w-65 h-100">
 
       {/* Imagen */}
       <div className="p-0relative w-full h-32 rounded-lg bg-[#007F5F]/10 
