@@ -59,7 +59,7 @@ export default function Products() {
   };
 
   return (
-    <section className="py-16 lg:py-20 bg-[#F5F5F5]">
+    <section className="py-8 lg:py-20 bg-[#F5F5F5]">
       <div className="max-w-[1440px] mx-auto px-4 lg:px-20">
 
         {/* Encabezado */}

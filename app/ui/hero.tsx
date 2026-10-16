@@ -30,7 +30,7 @@ export default function Hero() {
           </h1>
 
           <p className="text-white/70 text-lg leading-relaxed mb-8 font-inter">
-            Somos especialistas en accesorios para cocinas y muebles, triplex y herrajes. Transformamos tus espacios con calidad.
+            Somos especialistas en fabricación, diseño e instalación de cocinas, muebles y proyectos en madera y marmol.
           </p>
 
           <div className="flex flex-row gap-3 justify-center mt-6 items-center">

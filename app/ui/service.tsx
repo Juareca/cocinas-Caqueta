@@ -7,22 +7,48 @@ import { useEffect, useState } from "react";
 import ArrowButtons from "./ArrowButtons";
 import { CarouselDots } from "./CarouselDots";
 
+const services = [
+  {
+    title: "Fabricación de Cocinas",
+    image: "/cocina.png",
+    price: "$350.000",
+    time: "2–5 días",
+  },
+  {
+    title: "Decoración de Interiores",
+    image: "/cocina.png",
+    price: "$350.000",
+    time: "2–5 días",
+  },
+  {
+    title: "Reparación de Muebles",
+    image: "/cocina.png",
+    price: "$350.000",
+    time: "2–5 días",
+  },
+  {
+    title: "Reparación de Máquinas",
+    image: "/cocina.png",
+    price: "$350.000",
+    time: "2–5 días",
+  },
+];
+
 export default function Servicios() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
-  loop: false,
-  align: "start",
-  containScroll: "keepSnaps",
-});
+    loop: false,
+    align: "start",
+    containScroll: "keepSnaps",
+  });
 
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
 
-  // Bloquear scroll hacia la izquierda
   useEffect(() => {
     if (!emblaApi) return;
 
     setScrollSnaps(emblaApi.scrollSnapList());
-    
+
     emblaApi.on("select", () => {
       setSelectedIndex(emblaApi.selectedScrollSnap());
     });
@@ -32,7 +58,7 @@ export default function Servicios() {
   const scrollPrev = () => emblaApi?.scrollPrev();
 
   return (
-    <section className="py-16 lg:py-10 bg-white relative">
+    <section className="py-8 lg:py-10 bg-white relative">
       <div className="max-w-[1440px] mx-auto px-8 lg:px-20">
 
         {/* Encabezado */}
@@ -51,93 +77,38 @@ export default function Servicios() {
         </div>
 
         {/* Carrusel */}
-        <div className="pl-8 overflow-hidden" ref={emblaRef}>
-          <div className="flex gap-8">
+        <div className="embla">
+          <div className="embla__viewport overflow-hidden pl-4" ref={emblaRef}>
+            <div className="embla__container flex gap-8">
 
-            {/* Tarjeta 1 */}
-            <div className="min-w-[260px] md:min-w-[300px]">
-              <ServiceCard
-                img={
-                  <div className="relative w-full h-40">
-                    <Image
-                      src="/cocina.png"
-                      alt="Diseño de Cocinas"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover"
-                    />
-                  </div>
-                }
-                title="Fabricación de Cocinas"
-                price="$350.000"
-                time="2–5 días"
-              />
+              {services.map((service, index) => (
+                <div
+                  key={index}
+                  className="embla__slide min-w-[260px] md:min-w-[300px]"
+                >
+                  <ServiceCard
+                    img={
+                      <div className="relative w-full h-40">
+                        <Image
+                          src={service.image}
+                          alt={service.title}
+                          fill
+                          sizes="(max-width: 768px) 100vw, 300px"
+                          className="object-cover"
+                        />
+                      </div>
+                    }
+                    title={service.title}
+                    price={service.price}
+                    time={service.time}
+                  />
+                </div>
+              ))}
+
             </div>
-
-            {/* Tarjeta 2 */}
-            <div className="min-w-[260px] md:min-w-[300px]">
-              <ServiceCard
-                img={
-                  <div className="relative w-full h-40">
-                    <Image
-                      src="/cocina.png"
-                      alt="Decoración"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover"
-                    />
-                  </div>
-                }
-                title="Decoración de Interiores"
-                price="$350.000"
-                time="2–5 días"
-              />
-            </div>
-
-            {/* Tarjeta 3 */}
-            <div className="min-w-[260px] md:min-w-[300px]">
-              <ServiceCard
-                img={
-                  <div className="relative w-full h-40">
-                    <Image
-                      src="/cocina.png"
-                      alt="Reparación"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover"
-                    />
-                  </div>
-                }
-                title="Reparación de Muebles"
-                price="$350.000"
-                time="2–5 días"
-              />
-            </div>
-
-            {/* Tarjeta 4 */}
-            <div className="min-w-[260px] md:min-w-[300px]">
-              <ServiceCard
-                img={
-                  <div className="relative w-full h-40">
-                    <Image
-                      src="/cocina.png"
-                      alt="Reparación"
-                      fill
-                      sizes="(max-width: 768px) 100vw, 33vw"
-                      className="object-cover"
-                    />
-                  </div>
-                }
-                title="Reparación maquinas"
-                price="$350.000"
-                time="2–5 días"
-              />
-            </div>
-
           </div>
         </div>
 
-        { /* Flechas Derecha e Izquierda */}
         <ArrowButtons onPrev={scrollPrev} onNext={scrollNext} />
 
         <CarouselDots

@@ -5,6 +5,8 @@ import Services from "./ui/service";
 import Products from "./ui/products";
 import BannerCTA from "./ui/BannerCTA";
 import { useRouter } from "next/navigation";
+import TrustBadges from "./ui/TrustBadges";
+import Footer from "./ui/Footer";
 
 export default function Home() {
   const router = useRouter();
@@ -20,6 +22,8 @@ export default function Home() {
         phone="+57 604 123 4567"
         onQuote={() => router.push("/servicios")}
       />
+      <TrustBadges />
+      <Footer />
     </>
   );
 }

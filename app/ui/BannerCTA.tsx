@@ -33,10 +33,12 @@ export default function BannerCTA({
         <div className="flex flex-col sm:flex-row justify-center gap-4 sm:gap-6">
           <BtnSecondary
             onClick={onQuote}
-            className="border-white text-black text-lg hover:bg-white hover:text-[#007F5F]"
+            className="border-white text-black hover:bg-[#007F5F] "
           >
             Solicitar cotización
           </BtnSecondary>
+
+
           <a
             href={`tel:${phone}`}
             className="inline-flex items-center justify-center gap-2 h-12 px-6 text-white font-semibold"
