@@ -20,7 +20,7 @@ export default function Home() {
         title="¿Tienes un proyecto en mente?"
         description="Cuéntanos tu idea y te ayudamos a hacerla realidad. Cotización gratuita y sin compromiso."
         phone="+57 604 123 4567"
-        onQuote={() => router.push("/servicios")}
+        quoteHref="/servicios"
       />
       <TrustBadges />
       <Footer />

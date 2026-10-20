@@ -1,11 +1,8 @@
-"use client";
-
 import Image from "next/image";
 import Button from "./Buttons";
-import { useRouter } from "next/navigation";
+import Link from "next/link";
 
 export default function Hero() {
-  const router = useRouter();
   return (
     <main className="relative w-full min-h-[calc(100vh-53px)] flex items-center justify-center">
       <Image
@@ -34,8 +31,9 @@ export default function Hero() {
           </p>
 
           <div className="flex flex-row gap-3 justify-center mt-6 items-center">
-            <Button onClick={() => router.push("/servicios")}>Nuestros Servicios</Button>
-            <Button onClick={() => router.push("/productos")}>Ver Productos {">"}</Button>
+            <Button href="/servicios">Nuestros Servicios</Button>
+
+            <Button href="/productos">Ver Productos {">"}</Button>
         </div>        
       </div>
     </main>

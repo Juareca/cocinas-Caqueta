@@ -1,26 +1,21 @@
+'use client'
+
 import { Heart, Plus } from "lucide-react";
 import { useState } from "react";
 import StarRating from "./StarRating";
+import type { Product } from "@/app/types/product";
 
-export type Product = {
-  name: string;
-  category: string;
-  price: number;
-  rating: number;
-  reviews: number;
-  image: string;
-  badge?: string;
+type ProductCardProps = {
+  product: Product;
+  onAdd: (product: Product) => void;
+  onView: (product: Product) => void;
 };
 
 export default function ProductCard({
   product,
   onAdd,
   onView,
-}: {
-  product: Product;
-  onAdd: (p: Product) => void;
-  onView: (p: Product) => void;
-}) {
+}: ProductCardProps) {
   const [liked, setLiked] = useState(false);
 
   return (
@@ -72,9 +67,10 @@ export default function ProductCard({
 
         {/* Like */}
         <button
+          type="button"
           onClick={(e) => {
             e.stopPropagation();
-            setLiked(!liked);
+            setLiked((previousLiked) => !previousLiked);
           }}
           className="
             absolute top-3 right-3 

@@ -3,45 +3,8 @@
 import { ChevronRight } from "lucide-react";
 import BtnSecondary from "./BtnSecuday";
 import ProductCard from "./ProductCard";
-import { Product } from "@/app/ui/ProductCard";
-
-const products: Product[] = [
-  {
-    name: "Bisagra Oculta 35mm Clip-On",
-    category: "Bisagras",
-    price: 12500,
-    rating: 5,
-    reviews: 124,
-    image: "/ferreteria.png",
-    badge: "Más vendido",
-  },
-  {
-    name: "Herraje Corredera Telescópica 500mm",
-    category: "Herrajes",
-    price: 38900,
-    rating: 5,
-    reviews: 87,
-    image: "/ferreteria.png",
-    badge: "Nuevo",
-  },
-  {
-    name: "Triplex 18mm MDF Enchapado Madera",
-    category: "Triplex",
-    price: 89000,
-    rating: 5,
-    reviews: 203,
-    image: "/ferreteria.png",
-  },
-  {
-    name: "Bisagra Oculta 35mm Clip-On",
-    category: "Bisagras",
-    price: 12500,
-    rating: 5,
-    reviews: 124,
-    image: "/ferreteria.png",
-    badge: "Más vendido",
-  },
-];
+import type { Product } from "@/app/types/product";
+import { mockProducts } from "@/app/mocks/products.mock";
 
 export default function Products() {
 
@@ -83,9 +46,9 @@ export default function Products() {
 
         {/* Grid de productos */}
         <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {products.map((p, i) => (
+          {mockProducts.map((p) => (
             <ProductCard
-              key={i}
+              key={p.id}
               product={p}
               onAdd={handleAddToCart}
               onView={handleViewProduct}
