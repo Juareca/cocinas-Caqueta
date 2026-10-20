@@ -1,38 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import ServiceCard from "./ServiceCard";
 import useEmblaCarousel from "embla-carousel-react";
 import { useEffect, useState } from "react";
 import ArrowButtons from "./ArrowButtons";
 import { CarouselDots } from "./CarouselDots";
-
-const services = [
-  {
-    title: "Fabricación de Cocinas",
-    image: "/cocina.png",
-    price: "$350.000",
-    time: "2–5 días",
-  },
-  {
-    title: "Decoración de Interiores",
-    image: "/cocina.png",
-    price: "$350.000",
-    time: "2–5 días",
-  },
-  {
-    title: "Reparación de Muebles",
-    image: "/cocina.png",
-    price: "$350.000",
-    time: "2–5 días",
-  },
-  {
-    title: "Reparación de Máquinas",
-    image: "/cocina.png",
-    price: "$350.000",
-    time: "2–5 días",
-  },
-];
+import { mockServices } from "@/app/mocks/services.mock";
 
 export default function Servicios() {
   const [emblaRef, emblaApi] = useEmblaCarousel({
@@ -42,16 +15,22 @@ export default function Servicios() {
   });
 
   const [selectedIndex, setSelectedIndex] = useState(0);
-  const [scrollSnaps, setScrollSnaps] = useState<number[]>([]);
+  const scrollSnaps = emblaApi?.scrollSnapList() ?? [];
 
   useEffect(() => {
     if (!emblaApi) return;
 
-    setScrollSnaps(emblaApi.scrollSnapList());
-
-    emblaApi.on("select", () => {
+    const updateSelectedIndex = () => {
       setSelectedIndex(emblaApi.selectedScrollSnap());
-    });
+    };
+
+    emblaApi.on("select", updateSelectedIndex);
+    emblaApi.on("reInit", updateSelectedIndex);
+
+    return () => {
+      emblaApi.off("select", updateSelectedIndex);
+      emblaApi.off("reInit", updateSelectedIndex);
+    };
   }, [emblaApi]);
 
   const scrollNext = () => emblaApi?.scrollNext();
@@ -81,27 +60,12 @@ export default function Servicios() {
           <div className="embla__viewport overflow-hidden pl-4" ref={emblaRef}>
             <div className="embla__container flex gap-8">
 
-              {services.map((service, index) => (
+              {mockServices.map((service) => (
                 <div
-                  key={index}
+                  key={service.id}
                   className="embla__slide min-w-[260px] md:min-w-[300px]"
                 >
-                  <ServiceCard
-                    img={
-                      <div className="relative w-full h-40">
-                        <Image
-                          src={service.image}
-                          alt={service.title}
-                          fill
-                          sizes="(max-width: 768px) 100vw, 300px"
-                          className="object-cover"
-                        />
-                      </div>
-                    }
-                    title={service.title}
-                    price={service.price}
-                    time={service.time}
-                  />
+                  <ServiceCard service={service} />
                 </div>
               ))}
 

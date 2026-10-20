@@ -1,7 +1,7 @@
 "use client";
 
 import Hero from "./ui/hero";
-import Services from "./ui/service";
+import Services from "./ui/services";
 import Products from "./ui/products";
 import BannerCTA from "./ui/BannerCTA";
 import { useRouter } from "next/navigation";

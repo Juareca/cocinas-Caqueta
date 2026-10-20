@@ -1,38 +1,38 @@
-import React from "react";
+import Image from "next/image";
+import type { Service } from "@/app/types/services";
 
-interface Props {
-  img: React.ReactNode;
-  title: string;
-  price: string;
-  time: string;
-}
-
-export default function ServiceCard({ img, title, price, time }: Props) {
+export default function ServiceCard({ service }: { service: Service }) {
   return (
     <div className=" group bg-[#F5F5F5] rounded-xl p-4 hover:bg-[#007F5F] transition-colors duration-300 w-65 h-85">
 
       {/* Imagen */}
-      <div className="p-0relative w-full h-32 rounded-lg bg-[#007F5F]/10 
+      <div className="relative w-full h-32 rounded-lg bg-[#007F5F]/10 
                 group-hover:bg-white/20 mb-6 transition-colors overflow-hidden">
-        {img}
+        <Image
+          src={service.image}
+          alt={service.title}
+          fill
+          sizes="(max-width: 768px) 100vw, 300px"
+          className="object-cover"
+        />
       </div>
 
       <h3 className="text-[#1A1A1A] group-hover:text-white text-xl font-bold mb-3 transition-colors" style={{ fontFamily: "Poppins" }}>
-        {title}
+        {service.title}
       </h3>
 
       <div className="flex items-center justify-between mb-6">
         <div>
           <p className="text-xs text-[#6B6B6B] group-hover:text-white/60 transition-colors">Desde</p>
           <p className="font-bold text-[#007F5F] group-hover:text-[#C69C6D] transition-colors" style={{ fontFamily: "Poppins" }}>
-            {price}
+            {service.price}
           </p>
         </div>
 
         <div className="text-right">
           <p className="text-xs text-[#6B6B6B] group-hover:text-white/60 transition-colors">Tiempo</p>
           <p className="font-medium text-sm text-[#1A1A1A] group-hover:text-white transition-colors">
-            {time}
+            {service.time}
           </p>
         </div>
       </div>
