@@ -1,15 +1,10 @@
-"use client";
-
 import Hero from "./ui/hero";
 import Services from "./ui/services";
 import Products from "./ui/products";
 import BannerCTA from "./ui/BannerCTA";
-import { useRouter } from "next/navigation";
 import TrustBadges from "./ui/TrustBadges";
-import Footer from "./ui/Footer";
 
 export default function Home() {
-  const router = useRouter();
 
   return (
     <>
@@ -23,7 +18,6 @@ export default function Home() {
         quoteHref="/servicios"
       />
       <TrustBadges />
-      <Footer />
     </>
   );
 }

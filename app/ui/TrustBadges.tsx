@@ -1,5 +1,3 @@
-"use client";
-
 import { Shield, Package, Wrench, Phone } from "lucide-react";
 
 const items = [
