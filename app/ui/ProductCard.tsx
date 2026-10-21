@@ -1,6 +1,7 @@
 'use client'
 
 import { Heart, Plus } from "lucide-react";
+import Image from "next/image";
 import { useState } from "react";
 import StarRating from "./StarRating";
 import type { Product } from "@/app/types/product";
@@ -40,9 +41,11 @@ export default function ProductCard({
         "
         onClick={() => onView(product)}
       >
-        <img
+        <Image
           src={product.image}
           alt={product.name}
+          fill
+          sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw"
           className="
             w-full h-full object-cover 
             transition-transform duration-500 

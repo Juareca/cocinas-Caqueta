@@ -1,68 +1,39 @@
-"use client";
-
-import { ChevronRight } from "lucide-react";
-import BtnSecondary from "./BtnSecuday";
-import ProductCard from "./ProductCard";
-import type { Product } from "@/app/types/product";
+import Link from "next/link";
+import { ArrowRight } from "lucide-react";
 import { mockProducts } from "@/app/mocks/products.mock";
+import ProductGrid from "./ProductGrid";
 
 export default function Products() {
-
-  // 👉 Aquí defines las funciones reales
-  const handleAddToCart = (product: Product) => {
-    console.log("Agregar al carrito:", product);
-    // Aquí conectas tu lógica real de carrito
-  };
-
-  const handleViewProduct = (product: Product) => {
-    console.log("Ver producto:", product);
-    // Aquí abres modal o cambias página
-    // setSelectedProduct(product)
-    // setPage("detalle")
-  };
-
   return (
-    <section className="py-8 lg:py-20 bg-[#F5F5F5]">
+    <section className="bg-[#F5F5F5] py-14 sm:py-16 lg:py-20">
       <div className="max-w-[1440px] mx-auto px-4 lg:px-20">
-
-        {/* Encabezado */}
-        <div className="flex items-end justify-between mb-10">
+        <div className="mb-8 flex items-end justify-between sm:mb-10">
           <div>
-            <p className="text-[#007F5F] text-sm font-semibold uppercase tracking-wider mb-2">
+            <p className="mb-2 text-xs font-bold uppercase tracking-[0.16em] text-[#007F5F]">
               Lo más popular
             </p>
-            <h2 className="font-bold text-[#1A1A1A] text-xl">
+            <h2 className="text-2xl font-bold tracking-tight text-[#1A1A1A] sm:text-3xl">
               Productos Destacados
             </h2>
           </div>
-
-          <button
-            onClick={() => {}}
-            className="hidden sm:flex items-center gap-1 text-[#007F5F] font-medium hover:gap-2 transition-all"
+          <Link
+            href="/productos"
+            className="hidden items-center gap-2 text-sm font-semibold text-[#007F5F] transition hover:gap-3 sm:flex"
           >
-            Ver catálogo <ChevronRight size={18} />
-          </button>
+            Ver catálogo <ArrowRight size={17} aria-hidden="true" />
+          </Link>
         </div>
 
-        {/* Grid de productos */}
-        <div className="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-          {mockProducts.map((p) => (
-            <ProductCard
-              key={p.id}
-              product={p}
-              onAdd={handleAddToCart}
-              onView={handleViewProduct}
-            />
-          ))}
-        </div>
-
-        {/* Botón móvil */}
-        <div className="text-center mt-8 sm:hidden">
-          <BtnSecondary onClick={() => {}}>
+        <ProductGrid products={mockProducts} />
+        <div className="mt-8 flex justify-center sm:hidden">
+          <Link
+            href="/productos"
+            className="inline-flex min-h-12 items-center justify-center gap-2 rounded-xl border border-[#007F5F]/25 bg-white px-5 text-sm font-semibold text-[#007F5F] transition hover:bg-[#007F5F] hover:text-white"
+          >
             Ver todos los productos
-          </BtnSecondary>
+            <ArrowRight size={17} aria-hidden="true" />
+          </Link>
         </div>
-
       </div>
     </section>
   );
