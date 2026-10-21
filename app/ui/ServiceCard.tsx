@@ -1,45 +1,49 @@
 import Image from "next/image";
+import Link from "next/link";
+import { ArrowUpRight, Clock3 } from "lucide-react";
 import type { Service } from "@/app/types/services";
 
 export default function ServiceCard({ service }: { service: Service }) {
   return (
-    <div className=" group bg-[#F5F5F5] rounded-xl p-4 hover:bg-[#007F5F] transition-colors duration-300 w-65 h-85">
-
-      {/* Imagen */}
-      <div className="relative w-full h-32 rounded-lg bg-[#007F5F]/10 
-                group-hover:bg-white/20 mb-6 transition-colors overflow-hidden">
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#E7EAE6] bg-white shadow-[0_8px_30px_-20px_rgba(26,26,26,0.28)] transition duration-300 hover:-translate-y-1 hover:border-[#007F5F]/30 hover:shadow-[0_20px_45px_-24px_rgba(0,127,95,0.35)]">
+      <div className="relative aspect-[1.45] overflow-hidden bg-[#E9EFEB]">
         <Image
           src={service.image}
           alt={service.title}
           fill
-          sizes="(max-width: 768px) 100vw, 300px"
-          className="object-cover"
+          sizes="(max-width: 639px) 100vw, (max-width: 1279px) 50vw, 25vw"
+          className="object-cover transition duration-700 group-hover:scale-105"
         />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent" />
+        <p className="absolute bottom-4 left-5 right-5 text-lg font-semibold leading-snug text-white sm:text-xl">
+          {service.title}
+        </p>
       </div>
 
-      <h3 className="text-[#1A1A1A] group-hover:text-white text-xl font-bold mb-3 transition-colors" style={{ fontFamily: "Poppins" }}>
-        {service.title}
-      </h3>
-
-      <div className="flex items-center justify-between mb-6">
-        <div>
-          <p className="text-xs text-[#6B6B6B] group-hover:text-white/60 transition-colors">Desde</p>
-          <p className="font-bold text-[#007F5F] group-hover:text-[#C69C6D] transition-colors" style={{ fontFamily: "Poppins" }}>
-            {service.price}
-          </p>
-        </div>
-
-        <div className="text-right">
-          <p className="text-xs text-[#6B6B6B] group-hover:text-white/60 transition-colors">Tiempo</p>
-          <p className="font-medium text-sm text-[#1A1A1A] group-hover:text-white transition-colors">
+      <div className="flex flex-1 flex-col p-5 sm:p-6">
+        <div className="mb-5 flex items-end justify-between gap-3">
+          <div>
+            <p className="mb-1 text-xs font-medium uppercase tracking-wider text-[#7B817D]">
+              Desde
+            </p>
+            <p className="text-xl font-bold tracking-tight text-[#007F5F]">
+              {service.price}
+            </p>
+          </div>
+          <div className="flex items-center gap-1.5 rounded-lg bg-[#F4F7F5] px-3 py-2 text-xs font-medium text-[#52615A]">
+            <Clock3 size={15} aria-hidden="true" className="text-[#007F5F]" />
             {service.time}
-          </p>
+          </div>
         </div>
-      </div>
 
-      <button className="w-full h-10 rounded-lg border-2 border-[#007F5F] group-hover:border-white text-[#007F5F] group-hover:text-white font-semibold text-sm transition-all hover:bg-[#007F5F] group-hover:hover:bg-white/20">
-        Solicitar servicio
-      </button>
-    </div>
+        <Link
+          href={`/contacto?servicio=${service.id}`}
+          className="mt-auto inline-flex min-h-11 items-center justify-between rounded-xl bg-[#007F5F]/[0.07] px-4 text-sm font-semibold text-[#007F5F] transition hover:bg-[#007F5F] hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#007F5F]"
+        >
+          Solicitar servicio
+          <ArrowUpRight size={18} aria-hidden="true" />
+        </Link>
+      </div>
+    </article>
   );
 }
