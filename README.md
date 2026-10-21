@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Cocinas y Triplex Caquetá
 
-## Getting Started
+Sitio web para mostrar los servicios, productos e inspiración de proyectos de
+Cocinas y Triplex Caquetá, y facilitar el contacto con sus clientes.
 
-First, run the development server:
+## Requisitos
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Node.js 20.9 o superior.
+- pnpm 12.8.1, según la versión declarada en `package.json`.
+
+## Empezar en tu computador
+
+1. Clona el repositorio y entra a la carpeta del proyecto:
+
+   ```bash
+   git clone <URL_DEL_REPOSITORIO>
+   cd <CARPETA_DEL_PROYECTO>
+   ```
+
+2. Instala las dependencias:
+
+   ```bash
+   pnpm install
+   ```
+
+3. Inicia el servidor de desarrollo:
+
+   ```bash
+   pnpm dev
+   ```
+
+4. Abre [http://localhost:3000](http://localhost:3000) en el navegador. Los cambios en el código se reflejan mientras trabajas.
+
+Para detener el servidor, vuelve a la terminal y presiona `Ctrl + C`.
+
+## Páginas del sitio
+
+| Dirección | Contenido |
+| --- | --- |
+| `/` | Inicio, presentación, servicios destacados y productos destacados |
+| `/servicios` | Servicios disponibles y acceso a cotización |
+| `/productos` | Catálogo de productos |
+| `/proyectos` | Referencias visuales para inspirar proyectos |
+| `/contacto` | Teléfono, correo, ubicación y horario de atención |
+
+## Estructura del proyecto
+
+```text
+app/
+├── config/       # Enlaces y datos generales del sitio
+├── contacto/     # Página de contacto
+├── mocks/        # Datos de ejemplo para productos y servicios
+├── productos/    # Página del catálogo
+├── proyectos/    # Página de inspiración
+├── servicios/    # Página de servicios
+├── types/        # Tipos de TypeScript
+├── ui/           # Componentes visuales reutilizables
+├── globals.css   # Estilos globales
+├── layout.tsx    # Layout raíz, navegación y pie de página
+└── page.tsx      # Página de inicio
+public/           # Imágenes y otros archivos estáticos
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Las rutas se crean con el sistema App Router de Next.js. Por ejemplo,
+`app/servicios/page.tsx` corresponde a `/servicios`. Los componentes se renderizan en el servidor por defecto; `"use client"` se reserva para las partes que necesitan estado o interacción en el navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Editar el contenido
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- **Datos de contacto y navegación:** `app/config/site.ts`.
+- **Productos de muestra:** `app/mocks/products.mock.ts`.
+- **Servicios de muestra:** `app/mocks/services.mock.ts`.
+- **Imágenes:** guarda los archivos en `public/` y referencia, por ejemplo,
+  una imagen como `public/cocina.png` usando `/cocina.png`.
+- **Estilos globales:** `app/globals.css`. El diseño usa Tailwind CSS 4.
 
-## Learn More
+Para añadir una página, crea una carpeta dentro de `app/` y agrega un
+`page.tsx`. Por ejemplo, `app/nosotros/page.tsx` crea la ruta `/nosotros`.
+Puedes consultar las rutas existentes como referencia antes de añadir una
+nueva.
 
-To learn more about Next.js, take a look at the following resources:
+## Tecnologías
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Next.js 16 y React 19
+- TypeScript
+- Tailwind CSS 4
+- Lucide, Heroicons y React Icons
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Estado actual
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Los productos y servicios se alimentan de datos de ejemplo definidos en `app/mocks/`. Algunas acciones de productos son todavía demostrativas; antes de usarlas como tienda se deben conectar a una fuente de datos y a la lógica real de compra. Las imágenes de la página de proyectos son referencias visuales, no un registro de trabajos realizados.
