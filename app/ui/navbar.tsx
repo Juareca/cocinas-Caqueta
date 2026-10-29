@@ -41,7 +41,7 @@ export default function Navbar() {
             M
           </div>
 
-          <h1 className="block min-w-0 max-w-[110px] text-[11px] font-bold leading-tight tracking-tight sm:max-w-none sm:whitespace-nowrap sm:text-lg lg:text-xl">
+          <h1 className="block min-w-0 max-w-[110px] text-[14px] font-bold leading-tight tracking-tight sm:max-w-none sm:whitespace-nowrap sm:text-lg lg:text-xl">
             Cocinas y triplex caquetá
           </h1>
         </Link>
