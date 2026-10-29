@@ -5,32 +5,32 @@ import type { Service } from "@/app/types/services";
 
 export default function ServiceCard({ service }: { service: Service }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#E7EAE6] bg-white shadow-[0_8px_30px_-20px_rgba(26,26,26,0.28)] transition duration-300 hover:-translate-y-1 hover:border-[#007F5F]/30 hover:shadow-[0_20px_45px_-24px_rgba(0,127,95,0.35)]">
-      <div className="relative aspect-[1.45] overflow-hidden bg-[#E9EFEB]">
+    <article className="group flex h-full flex-col overflow-hidden rounded-2xl border border-[#E7EAE6] bg-white shadow-[0_8px_30px_-20px_rgba(26,26,26,0.28)] transition duration-300 hover:-translate-y-1 hover:border-[#007F5F]/30 hover:shadow-[0_20px_45px_-24px_rgba(0,127,95,0.35)] lg:h-[300px]">
+      <div className="relative aspect-[1.45] overflow-hidden bg-[#E9EFEB] lg:aspect-[1.7]">
         <Image
           src={service.image}
           alt={service.title}
           fill
-          sizes="(max-width: 639px) 100vw, (max-width: 1279px) 50vw, 25vw"
+          sizes="(max-width: 639px) 100vw, (max-width: 1023px) 50vw, 25vw"
           className="object-cover transition duration-700 group-hover:scale-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/5 to-transparent" />
-        <p className="absolute bottom-4 left-5 right-5 text-lg font-semibold leading-snug text-white sm:text-xl">
+        <p className="absolute bottom-4 left-5 right-5 text-lg font-semibold leading-snug text-white sm:text-xl lg:bottom-3 lg:left-4 lg:right-4 lg:text-base">
           {service.title}
         </p>
       </div>
 
-      <div className="flex flex-1 flex-col p-5 sm:p-6">
-        <div className="mb-5 flex items-end justify-between gap-3">
+      <div className="flex flex-1 flex-col p-5 sm:p-6 lg:p-4">
+        <div className="mb-5 flex items-end justify-between gap-3 lg:mb-3">
           <div>
             <p className="mb-1 text-xs font-medium uppercase tracking-wider text-[#7B817D]">
               Desde
             </p>
-            <p className="text-xl font-bold tracking-tight text-[#007F5F]">
+            <p className="text-xl font-bold tracking-tight text-[#007F5F] lg:text-lg">
               {service.price}
             </p>
           </div>
-          <div className="flex items-center gap-1.5 rounded-lg bg-[#F4F7F5] px-3 py-2 text-xs font-medium text-[#52615A]">
+          <div className="flex items-center gap-1.5 rounded-lg bg-[#F4F7F5] px-3 py-2 text-xs font-medium text-[#52615A] lg:px-2 lg:py-1.5">
             <Clock3 size={15} aria-hidden="true" className="text-[#007F5F]" />
             {service.time}
           </div>

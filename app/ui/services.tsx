@@ -37,16 +37,16 @@ export default function Servicios() {
   const scrollPrev = () => emblaApi?.scrollPrev();
 
   return (
-    <section className="py-8 lg:py-10 bg-white relative">
+    <section className="py-8 lg:py-8 bg-white relative">
       <div className="max-w-[1440px] mx-auto px-8 lg:px-20">
 
         {/* Encabezado */}
-        <div className="text-center mb-12">
+        <div className="text-center mb-8">
           <p className="text-[#007F5F] text-sm font-semibold uppercase tracking-wider mb-2">
             ¿Qué hacemos?
           </p>
 
-          <h2 className="text-[#1A1A1A] mb-4 text-3xl md:text-4xl font-bold">
+          <h2 className="text-[#1A1A1A] mb-2 text-1xl md:text-3xl font-bold">
             Nuestros Servicios
           </h2>
 
@@ -57,13 +57,13 @@ export default function Servicios() {
 
         {/* Carrusel */}
         <div className="embla">
-          <div className="embla__viewport overflow-hidden pl-4" ref={emblaRef}>
-            <div className="embla__container flex gap-8">
+          <div className="embla__viewport overflow-hidden pl-4 lg:pl-0" ref={emblaRef}>
+            <div className="embla__container flex gap-8 lg:gap-4">
 
               {mockServices.map((service) => (
                 <div
                   key={service.id}
-                  className="embla__slide min-w-[260px] md:min-w-[300px]"
+                  className="embla__slide min-w-[260px] md:min-w-[300px] lg:min-w-0 lg:flex-[0_0_calc((100%_-_48px)/4)]"
                 >
                   <ServiceCard service={service} />
                 </div>
