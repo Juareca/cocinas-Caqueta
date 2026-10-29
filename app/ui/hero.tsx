@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Button from "./Buttons";
-import Link from "next/link";
 
 export default function Hero() {
   return (
