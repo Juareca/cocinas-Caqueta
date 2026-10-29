@@ -1,19 +1,25 @@
 "use client";
 
 import { useState } from "react";
-import { GiWoodBeam } from "react-icons/gi";
-import { Bars3Icon } from "@heroicons/react/24/outline";
-import { inter } from "@/app/ui/fonts";
+import Link from "next/link";
 import { usePathname } from "next/navigation";
-import Link from 'next/link'
+import {
+  MagnifyingGlassIcon,
+  ShoppingCartIcon,
+  Bars3Icon,
+  XMarkIcon,
+  HomeIcon,
+  Squares2X2Icon,
+  Cog6ToothIcon,
+} from "@heroicons/react/24/outline";
 import clsx from "clsx";
-import Icono from "./icono";
 
-const links = [
-  { name: "Servicios", href: "/servicios" },
-  { name: "Productos", href: "/productos" },
-  { name: "Proyectos", href: "/proyectos" },
-  { name: "Contacto", href: "/contacto" },
+// ─── Navegación ────────────────────────────────────────────
+const navbarInfo = [
+  { name: "Inicio", href: "/", icon: HomeIcon },
+  { name: "Productos", href: "/productos", icon: Squares2X2Icon },
+  { name: "Servicios", href: "/servicios", icon: Cog6ToothIcon },
+  { name: "Carrito", href: "/carrito", icon: ShoppingCartIcon },
 ];
 
 export default function Navbar() {
@@ -21,80 +27,106 @@ export default function Navbar() {
   const pathname = usePathname();
 
   return (
-    <header className="sticky top-0 z-50 w-full flex items-center justify-between bg-white text-[#4A3F35] shadow px-4 py-2 border-b border-[#E5D8C8]/60">
-      
-      <div className="flex items-center gap-3">
+    <header className="sticky top-0 z-50 h-15 w-full border-b border-gray-200 bg-white text-[#202020] shadow-sm">
 
-        {/* Icono */}
-        <Icono />
+      {/* Barra principal */}
+      <div className="flex h-15 w-full items-center justify-between gap-2 px-3 sm:gap-3 sm:px-6 lg:px-8">
 
-        {/* Nombre */}
-        <h1 className="text-xl font-semibold tracking-wide text-[#4A3F35]">
-          Cocinas y Triplex Caquetá
-        </h1>
+        {/* Logo y nombre */}
+        <Link
+          href="/"
+          className="flex min-w-0 items-center gap-2 sm:gap-3"
+        >
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-[#008568] text-xl font-bold text-white sm:h-12 sm:w-12 sm:rounded-xl sm:text-2xl">
+            M
+          </div>
+
+          <h1 className="block min-w-0 max-w-[110px] text-[11px] font-bold leading-tight tracking-tight sm:max-w-none sm:whitespace-nowrap sm:text-lg lg:text-xl">
+            Cocinas y triplex caquetá
+          </h1>
+        </Link>
+
+        {/* Acciones */}
+        <div className="flex shrink-0 items-center gap-0.5 sm:gap-2 lg:gap-3">
+
+          {/* Buscar */}
+          <Link
+            href="/productos"
+            aria-label="Buscar productos"
+            className="p-2 text-gray-500 transition hover:text-[#008568]"
+          >
+            <MagnifyingGlassIcon className="h-6 w-6" />
+          </Link>
+
+          {/* Carrito */}
+          <Link
+            href="/carrito"
+            aria-label="Ver carrito"
+            className="p-2 text-gray-500 transition hover:text-[#008568]"
+          >
+            <ShoppingCartIcon className="h-6 w-6 sm:h-7 sm:w-7" />
+          </Link>
+
+          {/* Cotizar */}
+          <Link
+            href="/contacto"
+            className="flex h-10 shrink-0 items-center justify-center rounded-lg bg-[#008568] px-3 text-xs font-semibold text-white transition hover:bg-[#006f56] sm:px-4 sm:text-sm lg:min-w-[120px] lg:px-5 lg:text-base"
+          >
+            Cotizar
+          </Link>
+
+          {/* Menú hamburguesa */}
+          <button
+            type="button"
+            onClick={() => setOpen((prev) => !prev)}
+            aria-label={open ? "Cerrar menú" : "Abrir menú"}
+            aria-expanded={open}
+            className="p-2 text-gray-900 transition hover:text-[#008568]"
+          >
+            {open ? (
+              <XMarkIcon className="h-6 w-6 sm:h-7 sm:w-7" />
+            ) : (
+              <Bars3Icon className="h-6 w-6 sm:h-7 sm:w-7" />
+            )}
+          </button>
+        </div>
       </div>
 
-      {/* Enlaces desktop */}
-      <nav className={"hidden md:flex items-center gap-10 " + inter.className}>
-        {links.map((link) => (
-          <Link
-            key={link.name}
-            href={link.href}
-            className={clsx(
-              "text-md font-medium transition",
-              "text-[#4A3F35] hover:text-green-600",
-              {
-                "text-green-700 font-semibold": pathname === link.href,
-              }
-            )}
-          >
-            {link.name}
-          </Link>
-        ))}
-      </nav>
-
-      {/* Botón menú lateral */}
-      <button
-        onClick={() => setOpen(true)}
-        className="p-2 rounded-md border border-[#C8A98A] md:hidden hover:bg-[#EDE4D9] transition"
-      >
-        <Bars3Icon className="h-6 w-6 text-[#4A3F35]" />
-      </button>
-
-      {/* Drawer lateral */}
+      {/* Menú desplegable */}
       {open && (
-        <div
-          className="fixed inset-0 bg-black/40 backdrop-blur-sm z-40"
-          onClick={() => setOpen(false)}
-        >
-          <div
-            className="absolute left-0 top-0 h-full w-64 bg-[#F7F3ED] text-[#4A3F35] shadow-xl p-6 flex flex-col gap-6 border-r border-[#E5D8C8]"
-            onClick={(e) => e.stopPropagation()}
-          >
-            <button
-              onClick={() => setOpen(false)}
-              className="self-end p-2 border border-[#C8A98A] rounded-md hover:bg-[#EDE4D9] transition"
-            >
-              ✕
-            </button>
+        <>
+          <button
+            type="button"
+            aria-label="Cerrar menú"
+            onClick={() => setOpen(false)}
+            className="fixed inset-0 z-40 cursor-default bg-black/20"
+          />
 
-            {links.map((link) => (
-              <a
-                key={link.name}
-                href={link.href}
-                className={clsx(
-                  "text-lg font-medium transition",
-                  "hover:text-[#8B5E3C]",
-                  {
-                    "text-[#4A3F35] font-semibold": pathname === link.href,
-                  }
-                )}
-              >
-                {link.name}
-              </a>
-            ))}
-          </div>
-        </div>
+          <nav className="absolute right-4 top-full z-50 w-64 rounded-xl border border-gray-200 bg-white p-3 shadow-xl sm:right-8">
+            {navbarInfo.map((link) => {
+              const Icon = link.icon;
+              const active = pathname === link.href;
+
+              return (
+                <Link
+                  key={link.name}
+                  href={link.href}
+                  onClick={() => setOpen(false)}
+                  className={clsx(
+                    "flex items-center gap-3 rounded-lg px-4 py-3 text-base transition hover:bg-gray-100",
+                    active
+                      ? "bg-emerald-50 font-semibold text-[#008568]"
+                      : "text-[#4A3F35]"
+                  )}
+                  aria-current={active ? "page" : undefined}
+                >
+                  <Icon className="h-5 w-5" />
+                  {link.name}
+                </Link>
+              );
+            })}
+          </nav>
+        </>
       )}
     </header>
   );
